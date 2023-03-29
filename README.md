@@ -64,13 +64,24 @@ clean['Spending_Score'].unique()
 clean['Var_1'].unique()
 clean['Segmentation'].unique()
 from sklearn.preprocessing import OrdinalEncoder
-categorylist=[['Male', 'Female'],['No', 'Yes'],['No', 'Yes'],['Healthcare', 'Engineer', 'Lawyer', 'Artist', 'Doctor',
-       'Homemaker', 'Entertainment', 'Marketing', 'Executive'],['Low', 'High', 'Average']]
-    
+categorylist=[['Male', 'Female'],
+              ['No', 'Yes'],
+              ['No', 'Yes'],
+              ['Healthcare', 'Engineer', 'Lawyer', 'Artist', 'Doctor',
+       'Homemaker', 'Entertainment', 'Marketing', 'Executive'],
+              ['Low', 'High', 'Average']]
 enc=OrdinalEncoder(categories=categorylist)
 cust1=clean.copy()
 # INPUT---> OrdinalEncoder
-cust1[['Gender','Ever_Married','Graduated','Profession','Spending_Score']]=enc.fit_transform(cust1[['Gender','Ever_Married','Graduated','Profession','Spending_Score']])
+cust1[['Gender',
+        'Ever_Married',
+        'Graduated',
+        'Profession',
+        'Spending_Score']]=enc.fit_transform(cust1[['Gender',
+                                                    'Ever_Married',
+                                                    'Graduated',
+                                                    'Profession',
+                                                    'Spending_Score']])
 from sklearn.preprocessing import LabelEncoder
 le=LabelEncoder()
 cust1.dtypes
